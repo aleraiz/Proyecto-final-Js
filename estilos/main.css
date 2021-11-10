@@ -254,10 +254,24 @@ header #menuUsuarioHeader ul li i:hover {
 }
 
 #contenidoProductos #menuFiltrosProductos {
-  background-color: blue;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: menuFiltrosProductos;
+}
+
+#contenidoProductos #menuFiltrosProductos ul {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+#contenidoProductos #menuFiltrosProductos ul li {
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-family: "Encode Sans SC", sans-serif;
+}
+
+#contenidoProductos #menuFiltrosProductos ul li:hover {
+  color: #f8d134;
 }
 
 #contenidoProductos .contenidoProductosTarjetas {
@@ -312,11 +326,13 @@ header #menuUsuarioHeader ul li i:hover {
 #contenidoProductos .contenidoProductosTarjetas .producto-container h3 {
   margin: 1.5rem 1.5rem;
   height: 47px;
+  font-family: "Encode Sans SC", sans-serif;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container h4 {
   margin-left: 1.5rem;
   margin-bottom: 0.125rem;
+  font-family: "Encode Sans SC", sans-serif;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container button {
