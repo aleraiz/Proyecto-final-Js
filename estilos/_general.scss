@@ -1,0 +1,42 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header"
+        "contenido"
+        "footer";
+}
+
+// Nombres areas grid
+
+header {
+    grid-area: header;
+}
+
+.contenido {
+    grid-area: contenido;
+    min-height: 120vh;
+}
+
+footer {
+    grid-area: footer;
+}
+
+//Variables
+$color-amarillo: #f8d134;
+$color-blanco: whitesmoke;

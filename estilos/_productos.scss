@@ -1,0 +1,87 @@
+#contenidoProductos{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: 
+        "menuFiltrosProductos contenidoProductosTarjetas"
+                ;
+    
+
+
+
+        #menuFiltrosProductos {
+            background-color: blue;
+            grid-area: menuFiltrosProductos;
+
+        }
+
+        .contenidoProductosTarjetas {
+            grid-area: contenidoProductosTarjetas;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: .5rem;
+            grid-row-gap: .8rem;
+            justify-items: stretch;
+            
+
+            .producto-container {
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                border-radius: .3rem;
+                
+    
+                    &:hover {
+                        box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2);
+                    }
+    
+                    img {
+                        width: 275px;
+                        height: 350px;
+                        margin:1rem auto;
+                        transition: 2s;
+                        border-radius: .3rem;
+                        object-fit: cover;
+                        object-position: top;
+                    
+    
+                            &:hover {
+                                transform: scale(1.1,);
+                            }
+                    }
+    
+                    h3 {
+                        margin: 1.5rem 1.5rem;
+                        height: 47px;
+                    }
+    
+                    h4 {
+                        margin-left: 1.5rem;
+                        margin-bottom: 0.125rem;
+                    }
+    
+                    button {
+                        float: right;
+                        margin-right: 1.5rem;
+                        transition-duration: 0.5s;
+                        padding: .5rem 1.3rem;
+                        cursor: pointer;
+                        border-radius: .8rem;
+                        border: none;
+                        background-color: rgb(218, 217, 217);
+                        
+                        &:hover {
+                            background-color: rgb(76, 69, 69);
+                            color: white;
+                        } 
+    
+                    }
+    
+            }
+        }
+
+}
+
+
+
+
