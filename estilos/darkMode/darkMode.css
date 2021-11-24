@@ -31,7 +31,7 @@ header {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: contenido;
-  min-height: 100vh;
+  min-height: 120vh;
 }
 
 footer {
@@ -122,7 +122,7 @@ header #menuUsuarioHeader ul li i:hover {
           transform: scale(1.2);
 }
 
-.main-index {
+.contenido .main-index {
   background-image: url(../img/fotoPortadaIndex.jpg);
   height: 120vh;
   width: 100%;
@@ -131,7 +131,7 @@ header #menuUsuarioHeader ul li i:hover {
   background-repeat: no-repeat;
 }
 
-.main-index .principal__div {
+.contenido .main-index .principal__div {
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,7 +148,7 @@ header #menuUsuarioHeader ul li i:hover {
           flex-direction: column;
 }
 
-.main-index .principal__div .principal__subtitulo {
+.contenido .main-index .principal__div .principal__subtitulo {
   cursor: pointer;
   -webkit-transition: 2s;
   transition: 2s;
@@ -159,12 +159,12 @@ header #menuUsuarioHeader ul li i:hover {
   letter-spacing: 2.34px;
 }
 
-.main-index .principal__div .principal__subtitulo:hover {
+.contenido .main-index .principal__div .principal__subtitulo:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.main-index .principal__div .principal__enlace .boton-principal__div {
+.contenido .main-index .principal__div .principal__enlace .boton-principal__div {
   margin-top: .9rem;
   width: 10.5625rem;
   height: 3rem;
@@ -178,7 +178,7 @@ header #menuUsuarioHeader ul li i:hover {
   font-size: .9rem;
 }
 
-.main-index .principal__div .principal__enlace .boton-principal__div:hover {
+.contenido .main-index .principal__div .principal__enlace .boton-principal__div:hover {
   background-color: #f8d134;
   color: black;
   border: none;
@@ -246,9 +246,9 @@ header #menuUsuarioHeader ul li i:hover {
 }
 
 #contenidoProductos {
-  overflow: hidden;
   display: -ms-grid;
   display: grid;
+  background-color: black;
   -ms-grid-columns: 1fr 5fr;
       grid-template-columns: 1fr 5fr;
       grid-template-areas: "menuFiltrosProductos contenidoProductosTarjetas";
@@ -270,16 +270,16 @@ header #menuUsuarioHeader ul li i:hover {
   margin-bottom: 15px;
   cursor: pointer;
   font-family: "Encode Sans SC", sans-serif;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 5px;
   border-radius: 7px;
   text-align: center;
-  color: black;
+  color: whitesmoke;
 }
 
 #contenidoProductos #menuFiltrosProductos ul li:hover {
-  color: whitesmoke;
-  background-color: #1d1b1b;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.837);
 }
 
 #contenidoProductos .contenidoProductosTarjetas {
@@ -290,8 +290,8 @@ header #menuUsuarioHeader ul li i:hover {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.8rem;
+  grid-column-gap: .5rem;
+  grid-row-gap: .8rem;
   justify-items: stretch;
 }
 
@@ -305,12 +305,12 @@ header #menuUsuarioHeader ul li i:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   cursor: pointer;
-  border-radius: 0.3rem;
+  border-radius: .3rem;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container:hover {
-  -webkit-box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.5rem 1rem 0 rgba(255, 255, 255, 0.871);
+          box-shadow: 0 0.5rem 1rem 0 rgba(255, 255, 255, 0.871);
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container img {
@@ -319,7 +319,7 @@ header #menuUsuarioHeader ul li i:hover {
   margin: 1rem auto;
   -webkit-transition: 2s;
   transition: 2s;
-  border-radius: 0.3rem;
+  border-radius: .3rem;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
@@ -335,14 +335,14 @@ header #menuUsuarioHeader ul li i:hover {
   margin: 1.5rem 1.5rem;
   height: 47px;
   font-family: "Encode Sans SC", sans-serif;
-  color: black;
+  color: whitesmoke;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container h4 {
   margin-left: 1.5rem;
   margin-bottom: 0.125rem;
   font-family: "Encode Sans SC", sans-serif;
-  color: black;
+  color: whitesmoke;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container button {
@@ -350,9 +350,9 @@ header #menuUsuarioHeader ul li i:hover {
   margin-right: 1.5rem;
   -webkit-transition-duration: 0.5s;
           transition-duration: 0.5s;
-  padding: 0.5rem 1.3rem;
+  padding: .5rem 1.3rem;
   cursor: pointer;
-  border-radius: 0.8rem;
+  border-radius: .8rem;
   border: none;
   background-color: #dad9d9;
 }
@@ -554,114 +554,4 @@ header #menuUsuarioHeader ul li i:hover {
   border-radius: 10px;
   cursor: pointer;
 }
-
-.contenido-contacto {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-image: url(../img/contactofondo.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.contenido-contacto .contact {
-  margin: auto;
-  height: 600px;
-  background-color: #f8d134;
-  opacity: 0.7;
-  width: 500px;
-  border-radius: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
-}
-
-.contenido-contacto .contact .contact-sup {
-  height: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-}
-
-.contenido-contacto .contact .contact-sup .contact-info {
-  width: 50%;
-  padding-top: 20px;
-}
-
-.contenido-contacto .contact .contact-sup .contact-info img {
-  display: block;
-  margin: auto;
-}
-
-.contenido-contacto .contact .contact-sup .contact-info h2,
-.contenido-contacto .contact .contact-sup .contact-info h4 {
-  text-align: center;
-  margin-top: 10px;
-  font-family: 'Encode Sans SC', sans-serif;
-}
-
-.contenido-contacto .contact .contact-inf {
-  height: 70%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.contenido-contacto .contact .contact-inf .contact-form {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.contenido-contacto .contact .contact-inf .contact-form input {
-  width: 60%;
-  border-radius: 10px;
-  height: 30px;
-  margin: 10px auto;
-  text-align: center;
-  height: 40px;
-}
-
-.contenido-contacto .contact .contact-inf .contact-form textarea {
-  width: 70%;
-  margin: 10px auto;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.contenido-contacto .contact .contact-inf .contact-form label {
-  text-align: center;
-}
-
-.contenido-contacto .contact .contact-inf .contact-form button {
-  width: 30%;
-  margin: 10px auto;
-  height: 30px;
-  border-radius: 10px;
-}
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=darkMode.css.map */

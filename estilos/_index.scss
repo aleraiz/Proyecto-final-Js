@@ -13,43 +13,44 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        
-            .principal__subtitulo {
-                cursor: pointer;
-                transition: 2s;
-                color: $color-amarillo;
-                font-family: 'Encode Sans SC', sans-serif;
-                font-size: 3.5rem ;
-                font-weight: bold;
-                letter-spacing: 2.34px;                   
-            
-                    &:hover {
-                        transform: scale(1.1);
-                    }
+
+        .principal__subtitulo {
+            cursor: pointer;
+            transition: 2s;
+            color: $color-amarillo;
+            font-family: 'Encode Sans SC', sans-serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            letter-spacing: 2.34px;
+
+            &:hover {
+                transform: scale(1.1);
             }
-            .principal__enlace {
+        }
 
-                .boton-principal__div {
-                    margin-top: .9rem;
-                    width: 10.5625rem;
-                    height: 3rem;
-                    border: solid .1rem $color-blanco;
-                    border-radius: 1.75rem;
-                    cursor: pointer;
-                    text-transform: uppercase;
-                    background-color: transparent;
-                    color: $color-blanco;
-                    letter-spacing: 0.8px;
-                    font-size: .9rem;
+        .principal__enlace {
 
-                            &:hover {
-                                background-color: $color-amarillo;
-                                color: black;
-                                border: none;
-                            }
+            .boton-principal__div {
+                margin-top: .9rem;
+                width: 10.5625rem;
+                height: 3rem;
+                border: solid .1rem $color-blanco;
+                border-radius: 1.75rem;
+                cursor: pointer;
+                text-transform: uppercase;
+                background-color: transparent;
+                color: $color-blanco;
+                letter-spacing: 0.8px;
+                font-size: .9rem;
 
+                &:hover {
+                    background-color: $color-amarillo;
+                    color: black;
+                    border: none;
                 }
 
             }
+
+        }
     }
 }

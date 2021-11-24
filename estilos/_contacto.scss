@@ -1,0 +1,93 @@
+.contenido-contacto {
+    display: flex;
+    align-items: center;
+    background-image: url(../img/contactofondo.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .contact {
+        margin: auto;
+        height: 600px;
+        background-color: $color-amarillo;
+        opacity: 0.7;
+        width: 500px;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+        .contact-sup {
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            .contact-info {
+                width: 50%;
+                padding-top: 20px;
+
+                img {
+                    display: block;
+                    margin: auto;
+
+
+                }
+
+                h2,
+                h4 {
+                    text-align: center;
+                    margin-top: 10px;
+                    font-family: 'Encode Sans SC', sans-serif;
+                }
+            }
+        }
+
+        .contact-inf {
+            height: 70%;
+            display: flex;
+            justify-content: center;
+
+            .contact-form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                input {
+                    width: 60%;
+                    border-radius: 10px;
+                    height: 30px;
+                    margin: 10px auto;
+                    text-align: center;
+                    height: 40px;
+                }
+
+                textarea {
+                    width: 70%;
+                    margin: 10px auto;
+                    border-radius: 10px;
+                    padding: 10px;
+                }
+
+                label {
+                    text-align: center;
+                }
+
+                button {
+                    width: 30%;
+                    margin: 10px auto;
+                    height: 30px;
+                    border-radius: 10px;
+                }
+
+
+            }
+
+        }
+
+    }
+
+
+
+}
