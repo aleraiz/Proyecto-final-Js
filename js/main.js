@@ -1,5 +1,3 @@
-
-
 class User {
     
     constructor (nombre, password){
@@ -13,24 +11,24 @@ const alejandro = new User("ale","hola")
 
 
 
-const confirmacionDeAcceso = () => {
+// const confirmacionDeAcceso = () => {
 
-    let bucle = true
+//     let bucle = true
 
-    while (bucle) {
-        const nombre = prompt("Ingresa tu nombre");
-        const password = prompt("Ingresa tu pass");
+//     while (bucle) {
+//         const nombre = prompt("Ingresa tu nombre");
+//         const password = prompt("Ingresa tu pass");
 
-        if(nombre === alejandro.nombre && password === alejandro.password){
+//         if(nombre === alejandro.nombre && password === alejandro.password){
 
-            bucle = false
-            break;
+//             bucle = false
+//             break;
 
-        } else {
-            alert("Usuario incorrecto");
-        }
+//         } else {
+//             alert("Usuario incorrecto");
+//         }
 
-    }
-}
+//     }
+// }
 
-confirmacionDeAcceso()
+// confirmacionDeAcceso()
