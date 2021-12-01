@@ -293,6 +293,7 @@ header #menuUsuarioHeader ul li i:hover {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.8rem;
   justify-items: stretch;
+  padding-left: 50px;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container {
@@ -306,6 +307,8 @@ header #menuUsuarioHeader ul li i:hover {
           flex-direction: column;
   cursor: pointer;
   border-radius: 0.3rem;
+  max-height: 570px;
+  max-width: 500px;
 }
 
 #contenidoProductos .contenidoProductosTarjetas .producto-container:hover {
@@ -369,7 +372,7 @@ header #menuUsuarioHeader ul li i:hover {
 #contenidoProductos .carrito-compras {
   display: block;
   position: absolute;
-  top: -900px;
+  top: -1900px;
   right: 0px;
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.987);
@@ -474,7 +477,7 @@ header #menuUsuarioHeader ul li i:hover {
 #contenidoProductos .cuenta-usuario {
   display: block;
   position: absolute;
-  top: -600px;
+  top: -1900px;
   right: 0px;
   margin: auto;
   height: 600px;

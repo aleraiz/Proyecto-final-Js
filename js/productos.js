@@ -17,8 +17,9 @@ class AñadirProductoCarrito{
 let listaTodosLosProductosNueva;
 let listaTodosLosProductos=[];
 let listaProductosCarrito=[];
-let imprimirTodosLosProductos = $(".contenidoProductosTarjetas");
-let imprimirProductosCarrito = $("#carrito-compras-imprimir");
+let imprimirTodosLosProductos = document.getElementById("imprimirTarjetasProductos");
+let productosCarrito = document.getElementById("carrito-compras-imprimir");
+
 
 ////////////////         LLAMADA AJAX - API PRODUCTOS      ////////////////////
 
@@ -40,22 +41,37 @@ const url = `https://618ac9e034b4f400177c48a4.mockapi.io/api/v1/products`
 listaTodosLosProductosNueva = JSON.parse(localStorage.getItem("lista"));
 
 
-listaTodosLosProductosNueva.forEach(element =>{
+listaTodosLosProductosNueva.forEach(element => {
+    
+    let index = listaTodosLosProductosNueva.indexOf(element);
 
-    let index = listaTodosLosProductosNueva.indexOf(element)
-    
-    
-    imprimirTodosLosProductos.append(
-        `
-        <div class="producto-container">
-            <img src="${element.image}">
-            <h3 class="texto-productos">${element.name}</h3>
-            <h4 class="texto-productos">$ ${element.price}</h4>
-            <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
-        </div>
-        `
-    );
-})
+
+    imprimirTodosLosProductos.innerHTML += `
+        
+    <div class="producto-container">
+        <img src="${element.image}">
+        <h3 class="texto-productos">${element.name}</h3>
+        <h4 class="texto-productos">$ ${element.price}</h4>
+        <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+    </div>
+    `
+});
+
+
+
+
+// Filtrar productos
+console.log(listaTodosLosProductosNueva);
+let listaFiltradaZapatos = listaTodosLosProductosNueva.filter(obj => obj.category === "zapatos");
+let listaFiltradaAccesorios = listaTodosLosProductosNueva.filter(obj => obj.category === "accesorios");
+let listaFiltradaSuperiores = listaTodosLosProductosNueva.filter(obj => obj.category === "superiores");
+let listaFiltradaPantalones = listaTodosLosProductosNueva.filter(obj => obj.category === "pantalones");
+
+
+console.log(listaFiltradaZapatos);
+console.log(listaFiltradaAccesorios);
+console.log(listaFiltradaSuperiores);
+console.log(listaFiltradaPantalones);
 
 
 const comprar = (index) =>{
@@ -63,58 +79,17 @@ const comprar = (index) =>{
 
     if (localStorage.getItem("listaCarrito") == null) {
         listaProductosCarrito = [];
+    
     } else {
         listaProductosCarrito = JSON.parse(localStorage.getItem("listaCarrito"))
     }
 
     listaProductosCarrito.push(listaTodosLosProductosNueva[index])
     localStorage.setItem("listaCarrito",JSON.stringify(listaProductosCarrito))
+    finalizarCompra();
+    imprimirProductosCarrito()
 }
 
-
-
-
-// Imprimir productos del carrito(localstorage) en carrito
-
-if(localStorage.getItem("listaCarrito") == null){
-    console.log("No hay productos para mostrar en el carrito");
-} else {
-    listaProductosCarrito = JSON.parse(localStorage.getItem("listaCarrito"))
-}
-
-
-
-if (listaProductosCarrito.length != 0) {
-    listaProductosCarrito.forEach(element =>{
-
-        imprimirProductosCarrito.append(
-            `
-            <div class="producto-carrito">
-                <div>
-                    <img src="${element.image}">
-                </div>
-                <div class="producto-carrito-info">
-                    <p>${element.name}</p>
-                    <p>$ ${element.price}</p>
-                    <i class="fas fa-times" id="btn-eliminar-producto-carrito"></i>
-                </div>
-            </div>
-            
-            `
-        )
-    })
-} else {
-    imprimirProductosCarrito.append(
-        `
-        <div class="producto-carrito">
-            <div class="producto-carrito-info">
-                <p>Carrito vacío</p>
-            </div>
-        </div>
-        
-        `
-    )
-}
 
 // Compra en carrito
 
@@ -125,18 +100,56 @@ const finalizarCompra = ()=>{
     listaProductosCarrito.forEach(element => {
         monto += JSON.parse(element.price)
     });
-
+    // console.log(listaProductosCarrito);
+    // console.log(monto);
     document.getElementById("total-carrito-compra").textContent = `$ ${monto}`;
 }
 
-finalizarCompra()
 
-// Vaciar carrito
+
+
+
+// Imprimir productos del carrito(localstorage)
+
+const imprimirProductosCarrito = () =>{
+
+    if (listaProductosCarrito.length != 0) {
+
+        productosCarrito.innerHTML = `
+
+        `;
+
+        listaProductosCarrito.forEach(element =>{
+    
+            productosCarrito.innerHTML +=
+                `
+                <div class="producto-carrito">
+                    <div>
+                        <img src="${element.image}">
+                    </div>
+                    <div class="producto-carrito-info">
+                        <p>${element.name}</p>
+                        <p>$ ${element.price}</p>
+                        <i class="fas fa-times" id="btn-eliminar-producto-carrito"></i>
+                    </div>
+                </div>
+                
+                `
+            
+        })
+    } 
+}
+
+
+///////////////////////    Vaciar carrito    ///////////////////////////
 
 document.getElementById("btn-vaciar-carrito").addEventListener("click",()=>{
     localStorage.removeItem('listaCarrito');
-})
 
+    productosCarrito.innerHTML = `
+
+        `;
+})
 
 ////////////////////////////    DARK MODE     /////////////////////////
 
@@ -167,7 +180,7 @@ const carritoShow = () =>{
 }
 
 const carritoHide = () =>{
-    $(".carrito-compras").css("top", "-900px");
+    $(".carrito-compras").css("top", "-1900px");
     localStorage.setItem("carrito","hide")
 }
 
@@ -176,6 +189,7 @@ $("#btn-carrito-compras").on("click", ()=>{
         carritoHide()
     } else {
         carritoShow()
+        
     }
 });
 
@@ -187,7 +201,7 @@ const cuentaShow = () =>{
 }
 
 const cuentaHide = () =>{
-    $(".cuenta-usuario").css("top", "-900px");
+    $(".cuenta-usuario").css("top", "-1900px");
     localStorage.setItem("cuenta","hide")
 }
 
@@ -198,3 +212,43 @@ $("#btn-cuenta-usuario").on("click", ()=>{
         cuentaShow()
     }
 });
+
+
+
+
+
+
+///////////////////////// create element en lugar de usar inner Html
+// const div = document.createElement("div");
+// div.setAttribute("class","producto-container");
+
+// const img = document.createElement("img");
+// img.setAttribute("src", element.image);
+
+// const h3 = document.createElement("h3");
+// h3.classList.add("texto-productos");
+// h3.textContent = element.name;
+
+// const h4 = document.createElement("h4");
+// h4.setAttribute("class","texto-productos");
+// h4.textContent = "$ " + element.price;
+
+// const span1 = document.createElement("span");
+// const btn = document.createElement("button");
+// btn.setAttribute("class","btn-comprar");
+// btn.setAttribute("id","btn-"+element.id);
+// btn.setAttribute("onclick", comprar());
+// btn.textContent = "Agregar"
+
+// const logoAgregar = document.createElement("i")
+// logoAgregar.classList.add("usuario__iconos", "fas" , "fa-shopping-bag")
+
+// span1.append(btn);
+// btn.append(logoAgregar);
+
+// div.append(img);
+// div.append(h3);
+// div.append(h4);
+// div.append(span1);
+
+// imprimirTodosLosProductos.append(div)
