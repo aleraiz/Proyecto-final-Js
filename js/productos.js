@@ -19,9 +19,15 @@ let listaTodosLosProductos=[];
 let listaProductosCarrito=[];
 let imprimirTodosLosProductos = document.getElementById("imprimirTarjetasProductos");
 let productosCarrito = document.getElementById("carrito-compras-imprimir");
+const prendasSuperiores = document.getElementById("btn-prendas-superiores");
+const prendasInferiores = document.getElementById("btn-prendas-inferiores");
+const zapatos = document.getElementById("btn-zapatos");
+const accesorios = document.getElementById("btn-accesorios");
+const todos = document.getElementById("btn-productos-todos");
+let montoCarrito = document.getElementById("total-carrito-compra")
 
 
-////////////////         LLAMADA AJAX - API PRODUCTOS      ////////////////////
+////////////////////////////////////////////////////////////////////                            LLAMADA AJAX - API PRODUCTOS                     ////////////////////////////////////////////////////////////
 
 const url = `https://618ac9e034b4f400177c48a4.mockapi.io/api/v1/products`
 
@@ -41,10 +47,12 @@ const url = `https://618ac9e034b4f400177c48a4.mockapi.io/api/v1/products`
 listaTodosLosProductosNueva = JSON.parse(localStorage.getItem("lista"));
 
 
+////////////////////////////////////////////////////////////////////                            IMPRESION PRODUCTOS                     ////////////////////////////////////////////////////////////
+
 listaTodosLosProductosNueva.forEach(element => {
     
-    let index = listaTodosLosProductosNueva.indexOf(element);
-
+    let indexOf = listaTodosLosProductosNueva.indexOf(element);
+    let index = listaTodosLosProductosNueva[indexOf].id;
 
     imprimirTodosLosProductos.innerHTML += `
         
@@ -52,26 +60,138 @@ listaTodosLosProductosNueva.forEach(element => {
         <img src="${element.image}">
         <h3 class="texto-productos">${element.name}</h3>
         <h4 class="texto-productos">$ ${element.price}</h4>
-        <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        <span><button class="btn-comprar" id="${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
     </div>
     `
 });
 
 
+////////////////////////////////////////////////////////////////////                            FILTRAR PRODUCTOS                      ////////////////////////////////////////////////////////////
 
-
-// Filtrar productos
-console.log(listaTodosLosProductosNueva);
 let listaFiltradaZapatos = listaTodosLosProductosNueva.filter(obj => obj.category === "zapatos");
 let listaFiltradaAccesorios = listaTodosLosProductosNueva.filter(obj => obj.category === "accesorios");
 let listaFiltradaSuperiores = listaTodosLosProductosNueva.filter(obj => obj.category === "superiores");
-let listaFiltradaPantalones = listaTodosLosProductosNueva.filter(obj => obj.category === "pantalones");
+let listaFiltradaInferiores = listaTodosLosProductosNueva.filter(obj => obj.category === "pantalones");
 
+// PRENDAS SUPERIORES
 
-console.log(listaFiltradaZapatos);
-console.log(listaFiltradaAccesorios);
-console.log(listaFiltradaSuperiores);
-console.log(listaFiltradaPantalones);
+const mostrarPrendasSuperiores = prendasSuperiores.addEventListener("click", ()=>{
+    imprimirTodosLosProductos.innerHTML = ` `
+
+    listaFiltradaSuperiores.forEach(element => {
+    
+        let indexOf = listaTodosLosProductosNueva.indexOf(element);
+        let index = listaTodosLosProductosNueva[indexOf].id;
+    
+    
+        imprimirTodosLosProductos.innerHTML += `
+            
+        <div class="producto-container">
+            <img src="${element.image}">
+            <h3 class="texto-productos">${element.name}</h3>
+            <h4 class="texto-productos">$ ${element.price}</h4>
+            <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        </div>
+        `
+    });
+
+})
+
+// PRENDAS INFERIORES
+
+const mostrarPrendasInferiores = prendasInferiores.addEventListener("click", ()=>{
+    imprimirTodosLosProductos.innerHTML = ` `
+
+    listaFiltradaInferiores.forEach(element => {
+    
+        let indexOf = listaTodosLosProductosNueva.indexOf(element);
+        let index = listaTodosLosProductosNueva[indexOf].id;
+    
+    
+        imprimirTodosLosProductos.innerHTML += `
+            
+        <div class="producto-container">
+            <img src="${element.image}">
+            <h3 class="texto-productos">${element.name}</h3>
+            <h4 class="texto-productos">$ ${element.price}</h4>
+            <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        </div>
+        `
+    });
+
+});
+
+// ZAPATOS
+
+const mostrarZapatos = zapatos.addEventListener("click", ()=>{
+    imprimirTodosLosProductos.innerHTML = ` `
+
+    listaFiltradaZapatos.forEach(element => {
+    
+        let indexOf = listaTodosLosProductosNueva.indexOf(element);
+        let index = listaTodosLosProductosNueva[indexOf].id;
+    
+    
+        imprimirTodosLosProductos.innerHTML += `
+            
+        <div class="producto-container">
+            <img src="${element.image}">
+            <h3 class="texto-productos">${element.name}</h3>
+            <h4 class="texto-productos">$ ${element.price}</h4>
+            <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        </div>
+        `
+    });
+
+});
+
+// ACCESORIOS
+
+const mostrarAccesorios = accesorios.addEventListener("click", ()=>{
+    imprimirTodosLosProductos.innerHTML = ` `
+
+    listaFiltradaAccesorios.forEach(element => {
+    
+        let indexOf = listaTodosLosProductosNueva.indexOf(element);
+        let index = listaTodosLosProductosNueva[indexOf].id;
+    
+    
+        imprimirTodosLosProductos.innerHTML += `
+            
+        <div class="producto-container">
+            <img src="${element.image}">
+            <h3 class="texto-productos">${element.name}</h3>
+            <h4 class="texto-productos">$ ${element.price}</h4>
+            <span><button class="btn-comprar" id="btn-${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        </div>
+        `
+    });
+
+});
+
+// TODOS LOS PRODUCTOS
+
+const mostrarTodos = todos.addEventListener("click", ()=>{
+    imprimirTodosLosProductos.innerHTML = ` `
+
+    listaTodosLosProductosNueva.forEach(element => {
+    
+        let indexOf = listaTodosLosProductosNueva.indexOf(element);
+        let index = listaTodosLosProductosNueva[indexOf].id;
+    
+        imprimirTodosLosProductos.innerHTML += `
+            
+        <div class="producto-container">
+            <img src="${element.image}">
+            <h3 class="texto-productos">${element.name}</h3>
+            <h4 class="texto-productos">$ ${element.price}</h4>
+            <span><button class="btn-comprar" id="${element.id}" onclick="comprar(${index}) ">Agregar <i class="usuario__iconos fas fa-shopping-bag" aria-hidden="true"></i></button></span>
+        </div>
+        `
+    });
+
+})
+
 
 
 const comprar = (index) =>{
@@ -84,25 +204,28 @@ const comprar = (index) =>{
         listaProductosCarrito = JSON.parse(localStorage.getItem("listaCarrito"))
     }
 
-    listaProductosCarrito.push(listaTodosLosProductosNueva[index])
+    listaProductosCarrito.push(listaTodosLosProductosNueva[index -1])
     localStorage.setItem("listaCarrito",JSON.stringify(listaProductosCarrito))
-    finalizarCompra();
-    imprimirProductosCarrito()
+    sumaCompra();
+    imprimirProductosCarrito();
+    carritoShow();
+    setTimeout(function(){
+        carritoHide()
+    } ,2000);
 }
 
 
 // Compra en carrito
 
-const finalizarCompra = ()=>{
+const sumaCompra = ()=>{
 
     let monto = 0
 
     listaProductosCarrito.forEach(element => {
         monto += JSON.parse(element.price)
     });
-    // console.log(listaProductosCarrito);
-    // console.log(monto);
-    document.getElementById("total-carrito-compra").textContent = `$ ${monto}`;
+
+    montoCarrito.textContent = `$ ${monto}`;
 }
 
 
@@ -147,8 +270,15 @@ document.getElementById("btn-vaciar-carrito").addEventListener("click",()=>{
     localStorage.removeItem('listaCarrito');
 
     productosCarrito.innerHTML = `
-
+    
         `;
+
+    monto = 0;
+    montoCarrito.textContent = `$ ${monto}`;
+
+    setTimeout(function(){
+        carritoHide()
+    } ,2000);
 })
 
 ////////////////////////////    DARK MODE     /////////////////////////
